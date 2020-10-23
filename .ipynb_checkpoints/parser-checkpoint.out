@@ -1,0 +1,337 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> NEGATIVE expression
+Rule 2     statement -> expression
+Rule 3     expression -> expression OR expression
+Rule 4     expression -> expression BIGO expression
+Rule 5     expression -> expression BOTHARROW expression
+Rule 6     expression -> expression RIGHTARROW expression
+Rule 7     expression -> LEFTBRACE expression RIGHTBRACE
+Rule 8     expression -> LETTER
+Rule 9     expression -> BOOLEAN
+
+Terminals, with rules where they appear
+
+BIGO                 : 4
+BOOLEAN              : 9
+BOTHARROW            : 5
+LEFTBRACE            : 7
+LETTER               : 8
+NEGATIVE             : 1
+OR                   : 3
+RIGHTARROW           : 6
+RIGHTBRACE           : 7
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 2 3 3 4 4 5 5 6 6 7 0
+statement            : 
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . NEGATIVE expression
+    (3) expression -> . expression OR expression
+    (4) expression -> . expression BIGO expression
+    (5) expression -> . expression BOTHARROW expression
+    (6) expression -> . expression RIGHTARROW expression
+    (7) expression -> . LEFTBRACE expression RIGHTBRACE
+    (8) expression -> . LETTER
+    (9) expression -> . BOOLEAN
+
+    NEGATIVE        shift and go to state 2
+    LEFTBRACE       shift and go to state 3
+    LETTER          shift and go to state 4
+    BOOLEAN         shift and go to state 5
+
+    expression                     shift and go to state 1
+
+state 1
+
+    (0) S' -> expression .
+    (3) expression -> expression . OR expression
+    (4) expression -> expression . BIGO expression
+    (5) expression -> expression . BOTHARROW expression
+    (6) expression -> expression . RIGHTARROW expression
+
+    OR              shift and go to state 6
+    BIGO            shift and go to state 7
+    BOTHARROW       shift and go to state 8
+    RIGHTARROW      shift and go to state 9
+
+
+state 2
+
+    (1) expression -> NEGATIVE . expression
+    (1) expression -> . NEGATIVE expression
+    (3) expression -> . expression OR expression
+    (4) expression -> . expression BIGO expression
+    (5) expression -> . expression BOTHARROW expression
+    (6) expression -> . expression RIGHTARROW expression
+    (7) expression -> . LEFTBRACE expression RIGHTBRACE
+    (8) expression -> . LETTER
+    (9) expression -> . BOOLEAN
+
+    NEGATIVE        shift and go to state 2
+    LEFTBRACE       shift and go to state 3
+    LETTER          shift and go to state 4
+    BOOLEAN         shift and go to state 5
+
+    expression                     shift and go to state 10
+
+state 3
+
+    (7) expression -> LEFTBRACE . expression RIGHTBRACE
+    (1) expression -> . NEGATIVE expression
+    (3) expression -> . expression OR expression
+    (4) expression -> . expression BIGO expression
+    (5) expression -> . expression BOTHARROW expression
+    (6) expression -> . expression RIGHTARROW expression
+    (7) expression -> . LEFTBRACE expression RIGHTBRACE
+    (8) expression -> . LETTER
+    (9) expression -> . BOOLEAN
+
+    NEGATIVE        shift and go to state 2
+    LEFTBRACE       shift and go to state 3
+    LETTER          shift and go to state 4
+    BOOLEAN         shift and go to state 5
+
+    expression                     shift and go to state 11
+
+state 4
+
+    (8) expression -> LETTER .
+
+    OR              reduce using rule 8 (expression -> LETTER .)
+    BIGO            reduce using rule 8 (expression -> LETTER .)
+    BOTHARROW       reduce using rule 8 (expression -> LETTER .)
+    RIGHTARROW      reduce using rule 8 (expression -> LETTER .)
+    $end            reduce using rule 8 (expression -> LETTER .)
+    RIGHTBRACE      reduce using rule 8 (expression -> LETTER .)
+
+
+state 5
+
+    (9) expression -> BOOLEAN .
+
+    OR              reduce using rule 9 (expression -> BOOLEAN .)
+    BIGO            reduce using rule 9 (expression -> BOOLEAN .)
+    BOTHARROW       reduce using rule 9 (expression -> BOOLEAN .)
+    RIGHTARROW      reduce using rule 9 (expression -> BOOLEAN .)
+    $end            reduce using rule 9 (expression -> BOOLEAN .)
+    RIGHTBRACE      reduce using rule 9 (expression -> BOOLEAN .)
+
+
+state 6
+
+    (3) expression -> expression OR . expression
+    (1) expression -> . NEGATIVE expression
+    (3) expression -> . expression OR expression
+    (4) expression -> . expression BIGO expression
+    (5) expression -> . expression BOTHARROW expression
+    (6) expression -> . expression RIGHTARROW expression
+    (7) expression -> . LEFTBRACE expression RIGHTBRACE
+    (8) expression -> . LETTER
+    (9) expression -> . BOOLEAN
+
+    NEGATIVE        shift and go to state 2
+    LEFTBRACE       shift and go to state 3
+    LETTER          shift and go to state 4
+    BOOLEAN         shift and go to state 5
+
+    expression                     shift and go to state 12
+
+state 7
+
+    (4) expression -> expression BIGO . expression
+    (1) expression -> . NEGATIVE expression
+    (3) expression -> . expression OR expression
+    (4) expression -> . expression BIGO expression
+    (5) expression -> . expression BOTHARROW expression
+    (6) expression -> . expression RIGHTARROW expression
+    (7) expression -> . LEFTBRACE expression RIGHTBRACE
+    (8) expression -> . LETTER
+    (9) expression -> . BOOLEAN
+
+    NEGATIVE        shift and go to state 2
+    LEFTBRACE       shift and go to state 3
+    LETTER          shift and go to state 4
+    BOOLEAN         shift and go to state 5
+
+    expression                     shift and go to state 13
+
+state 8
+
+    (5) expression -> expression BOTHARROW . expression
+    (1) expression -> . NEGATIVE expression
+    (3) expression -> . expression OR expression
+    (4) expression -> . expression BIGO expression
+    (5) expression -> . expression BOTHARROW expression
+    (6) expression -> . expression RIGHTARROW expression
+    (7) expression -> . LEFTBRACE expression RIGHTBRACE
+    (8) expression -> . LETTER
+    (9) expression -> . BOOLEAN
+
+    NEGATIVE        shift and go to state 2
+    LEFTBRACE       shift and go to state 3
+    LETTER          shift and go to state 4
+    BOOLEAN         shift and go to state 5
+
+    expression                     shift and go to state 14
+
+state 9
+
+    (6) expression -> expression RIGHTARROW . expression
+    (1) expression -> . NEGATIVE expression
+    (3) expression -> . expression OR expression
+    (4) expression -> . expression BIGO expression
+    (5) expression -> . expression BOTHARROW expression
+    (6) expression -> . expression RIGHTARROW expression
+    (7) expression -> . LEFTBRACE expression RIGHTBRACE
+    (8) expression -> . LETTER
+    (9) expression -> . BOOLEAN
+
+    NEGATIVE        shift and go to state 2
+    LEFTBRACE       shift and go to state 3
+    LETTER          shift and go to state 4
+    BOOLEAN         shift and go to state 5
+
+    expression                     shift and go to state 15
+
+state 10
+
+    (1) expression -> NEGATIVE expression .
+    (3) expression -> expression . OR expression
+    (4) expression -> expression . BIGO expression
+    (5) expression -> expression . BOTHARROW expression
+    (6) expression -> expression . RIGHTARROW expression
+
+    OR              reduce using rule 1 (expression -> NEGATIVE expression .)
+    BIGO            reduce using rule 1 (expression -> NEGATIVE expression .)
+    BOTHARROW       reduce using rule 1 (expression -> NEGATIVE expression .)
+    RIGHTARROW      reduce using rule 1 (expression -> NEGATIVE expression .)
+    $end            reduce using rule 1 (expression -> NEGATIVE expression .)
+    RIGHTBRACE      reduce using rule 1 (expression -> NEGATIVE expression .)
+
+  ! OR              [ shift and go to state 6 ]
+  ! BIGO            [ shift and go to state 7 ]
+  ! BOTHARROW       [ shift and go to state 8 ]
+  ! RIGHTARROW      [ shift and go to state 9 ]
+
+
+state 11
+
+    (7) expression -> LEFTBRACE expression . RIGHTBRACE
+    (3) expression -> expression . OR expression
+    (4) expression -> expression . BIGO expression
+    (5) expression -> expression . BOTHARROW expression
+    (6) expression -> expression . RIGHTARROW expression
+
+    RIGHTBRACE      shift and go to state 16
+    OR              shift and go to state 6
+    BIGO            shift and go to state 7
+    BOTHARROW       shift and go to state 8
+    RIGHTARROW      shift and go to state 9
+
+
+state 12
+
+    (3) expression -> expression OR expression .
+    (3) expression -> expression . OR expression
+    (4) expression -> expression . BIGO expression
+    (5) expression -> expression . BOTHARROW expression
+    (6) expression -> expression . RIGHTARROW expression
+
+    OR              reduce using rule 3 (expression -> expression OR expression .)
+    BIGO            reduce using rule 3 (expression -> expression OR expression .)
+    BOTHARROW       reduce using rule 3 (expression -> expression OR expression .)
+    RIGHTARROW      reduce using rule 3 (expression -> expression OR expression .)
+    $end            reduce using rule 3 (expression -> expression OR expression .)
+    RIGHTBRACE      reduce using rule 3 (expression -> expression OR expression .)
+
+  ! OR              [ shift and go to state 6 ]
+  ! BIGO            [ shift and go to state 7 ]
+  ! BOTHARROW       [ shift and go to state 8 ]
+  ! RIGHTARROW      [ shift and go to state 9 ]
+
+
+state 13
+
+    (4) expression -> expression BIGO expression .
+    (3) expression -> expression . OR expression
+    (4) expression -> expression . BIGO expression
+    (5) expression -> expression . BOTHARROW expression
+    (6) expression -> expression . RIGHTARROW expression
+
+    OR              reduce using rule 4 (expression -> expression BIGO expression .)
+    BIGO            reduce using rule 4 (expression -> expression BIGO expression .)
+    BOTHARROW       reduce using rule 4 (expression -> expression BIGO expression .)
+    RIGHTARROW      reduce using rule 4 (expression -> expression BIGO expression .)
+    $end            reduce using rule 4 (expression -> expression BIGO expression .)
+    RIGHTBRACE      reduce using rule 4 (expression -> expression BIGO expression .)
+
+  ! OR              [ shift and go to state 6 ]
+  ! BIGO            [ shift and go to state 7 ]
+  ! BOTHARROW       [ shift and go to state 8 ]
+  ! RIGHTARROW      [ shift and go to state 9 ]
+
+
+state 14
+
+    (5) expression -> expression BOTHARROW expression .
+    (3) expression -> expression . OR expression
+    (4) expression -> expression . BIGO expression
+    (5) expression -> expression . BOTHARROW expression
+    (6) expression -> expression . RIGHTARROW expression
+
+    OR              reduce using rule 5 (expression -> expression BOTHARROW expression .)
+    BIGO            reduce using rule 5 (expression -> expression BOTHARROW expression .)
+    BOTHARROW       reduce using rule 5 (expression -> expression BOTHARROW expression .)
+    RIGHTARROW      reduce using rule 5 (expression -> expression BOTHARROW expression .)
+    $end            reduce using rule 5 (expression -> expression BOTHARROW expression .)
+    RIGHTBRACE      reduce using rule 5 (expression -> expression BOTHARROW expression .)
+
+  ! OR              [ shift and go to state 6 ]
+  ! BIGO            [ shift and go to state 7 ]
+  ! BOTHARROW       [ shift and go to state 8 ]
+  ! RIGHTARROW      [ shift and go to state 9 ]
+
+
+state 15
+
+    (6) expression -> expression RIGHTARROW expression .
+    (3) expression -> expression . OR expression
+    (4) expression -> expression . BIGO expression
+    (5) expression -> expression . BOTHARROW expression
+    (6) expression -> expression . RIGHTARROW expression
+
+    OR              reduce using rule 6 (expression -> expression RIGHTARROW expression .)
+    BIGO            reduce using rule 6 (expression -> expression RIGHTARROW expression .)
+    BOTHARROW       reduce using rule 6 (expression -> expression RIGHTARROW expression .)
+    RIGHTARROW      reduce using rule 6 (expression -> expression RIGHTARROW expression .)
+    $end            reduce using rule 6 (expression -> expression RIGHTARROW expression .)
+    RIGHTBRACE      reduce using rule 6 (expression -> expression RIGHTARROW expression .)
+
+  ! OR              [ shift and go to state 6 ]
+  ! BIGO            [ shift and go to state 7 ]
+  ! BOTHARROW       [ shift and go to state 8 ]
+  ! RIGHTARROW      [ shift and go to state 9 ]
+
+
+state 16
+
+    (7) expression -> LEFTBRACE expression RIGHTBRACE .
+
+    OR              reduce using rule 7 (expression -> LEFTBRACE expression RIGHTBRACE .)
+    BIGO            reduce using rule 7 (expression -> LEFTBRACE expression RIGHTBRACE .)
+    BOTHARROW       reduce using rule 7 (expression -> LEFTBRACE expression RIGHTBRACE .)
+    RIGHTARROW      reduce using rule 7 (expression -> LEFTBRACE expression RIGHTBRACE .)
+    $end            reduce using rule 7 (expression -> LEFTBRACE expression RIGHTBRACE .)
+    RIGHTBRACE      reduce using rule 7 (expression -> LEFTBRACE expression RIGHTBRACE .)
+

@@ -1,0 +1,307 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expr
+Rule 1     expr -> expr OR expr
+Rule 2     expr -> expr AND expr
+Rule 3     expr -> expr THEN expr
+Rule 4     expr -> expr IFIF expr
+Rule 5     expr -> MINUS expr
+Rule 6     expr -> LPAREN expr RPAREN
+Rule 7     expr -> PROP
+
+Terminals, with rules where they appear
+
+AND                  : 2
+IFIF                 : 4
+LPAREN               : 6
+MINUS                : 5
+OR                   : 1
+PROP                 : 7
+RPAREN               : 6
+THEN                 : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+expr                 : 1 1 2 2 3 3 4 4 5 6 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expr
+    (1) expr -> . expr OR expr
+    (2) expr -> . expr AND expr
+    (3) expr -> . expr THEN expr
+    (4) expr -> . expr IFIF expr
+    (5) expr -> . MINUS expr
+    (6) expr -> . LPAREN expr RPAREN
+    (7) expr -> . PROP
+
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 3
+    PROP            shift and go to state 4
+
+    expr                           shift and go to state 1
+
+state 1
+
+    (0) S' -> expr .
+    (1) expr -> expr . OR expr
+    (2) expr -> expr . AND expr
+    (3) expr -> expr . THEN expr
+    (4) expr -> expr . IFIF expr
+
+    OR              shift and go to state 5
+    AND             shift and go to state 6
+    THEN            shift and go to state 7
+    IFIF            shift and go to state 8
+
+
+state 2
+
+    (5) expr -> MINUS . expr
+    (1) expr -> . expr OR expr
+    (2) expr -> . expr AND expr
+    (3) expr -> . expr THEN expr
+    (4) expr -> . expr IFIF expr
+    (5) expr -> . MINUS expr
+    (6) expr -> . LPAREN expr RPAREN
+    (7) expr -> . PROP
+
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 3
+    PROP            shift and go to state 4
+
+    expr                           shift and go to state 9
+
+state 3
+
+    (6) expr -> LPAREN . expr RPAREN
+    (1) expr -> . expr OR expr
+    (2) expr -> . expr AND expr
+    (3) expr -> . expr THEN expr
+    (4) expr -> . expr IFIF expr
+    (5) expr -> . MINUS expr
+    (6) expr -> . LPAREN expr RPAREN
+    (7) expr -> . PROP
+
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 3
+    PROP            shift and go to state 4
+
+    expr                           shift and go to state 10
+
+state 4
+
+    (7) expr -> PROP .
+
+    OR              reduce using rule 7 (expr -> PROP .)
+    AND             reduce using rule 7 (expr -> PROP .)
+    THEN            reduce using rule 7 (expr -> PROP .)
+    IFIF            reduce using rule 7 (expr -> PROP .)
+    $end            reduce using rule 7 (expr -> PROP .)
+    RPAREN          reduce using rule 7 (expr -> PROP .)
+
+
+state 5
+
+    (1) expr -> expr OR . expr
+    (1) expr -> . expr OR expr
+    (2) expr -> . expr AND expr
+    (3) expr -> . expr THEN expr
+    (4) expr -> . expr IFIF expr
+    (5) expr -> . MINUS expr
+    (6) expr -> . LPAREN expr RPAREN
+    (7) expr -> . PROP
+
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 3
+    PROP            shift and go to state 4
+
+    expr                           shift and go to state 11
+
+state 6
+
+    (2) expr -> expr AND . expr
+    (1) expr -> . expr OR expr
+    (2) expr -> . expr AND expr
+    (3) expr -> . expr THEN expr
+    (4) expr -> . expr IFIF expr
+    (5) expr -> . MINUS expr
+    (6) expr -> . LPAREN expr RPAREN
+    (7) expr -> . PROP
+
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 3
+    PROP            shift and go to state 4
+
+    expr                           shift and go to state 12
+
+state 7
+
+    (3) expr -> expr THEN . expr
+    (1) expr -> . expr OR expr
+    (2) expr -> . expr AND expr
+    (3) expr -> . expr THEN expr
+    (4) expr -> . expr IFIF expr
+    (5) expr -> . MINUS expr
+    (6) expr -> . LPAREN expr RPAREN
+    (7) expr -> . PROP
+
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 3
+    PROP            shift and go to state 4
+
+    expr                           shift and go to state 13
+
+state 8
+
+    (4) expr -> expr IFIF . expr
+    (1) expr -> . expr OR expr
+    (2) expr -> . expr AND expr
+    (3) expr -> . expr THEN expr
+    (4) expr -> . expr IFIF expr
+    (5) expr -> . MINUS expr
+    (6) expr -> . LPAREN expr RPAREN
+    (7) expr -> . PROP
+
+    MINUS           shift and go to state 2
+    LPAREN          shift and go to state 3
+    PROP            shift and go to state 4
+
+    expr                           shift and go to state 14
+
+state 9
+
+    (5) expr -> MINUS expr .
+    (1) expr -> expr . OR expr
+    (2) expr -> expr . AND expr
+    (3) expr -> expr . THEN expr
+    (4) expr -> expr . IFIF expr
+
+    OR              reduce using rule 5 (expr -> MINUS expr .)
+    AND             reduce using rule 5 (expr -> MINUS expr .)
+    THEN            reduce using rule 5 (expr -> MINUS expr .)
+    IFIF            reduce using rule 5 (expr -> MINUS expr .)
+    $end            reduce using rule 5 (expr -> MINUS expr .)
+    RPAREN          reduce using rule 5 (expr -> MINUS expr .)
+
+  ! OR              [ shift and go to state 5 ]
+  ! AND             [ shift and go to state 6 ]
+  ! THEN            [ shift and go to state 7 ]
+  ! IFIF            [ shift and go to state 8 ]
+
+
+state 10
+
+    (6) expr -> LPAREN expr . RPAREN
+    (1) expr -> expr . OR expr
+    (2) expr -> expr . AND expr
+    (3) expr -> expr . THEN expr
+    (4) expr -> expr . IFIF expr
+
+    RPAREN          shift and go to state 15
+    OR              shift and go to state 5
+    AND             shift and go to state 6
+    THEN            shift and go to state 7
+    IFIF            shift and go to state 8
+
+
+state 11
+
+    (1) expr -> expr OR expr .
+    (1) expr -> expr . OR expr
+    (2) expr -> expr . AND expr
+    (3) expr -> expr . THEN expr
+    (4) expr -> expr . IFIF expr
+
+    OR              reduce using rule 1 (expr -> expr OR expr .)
+    AND             reduce using rule 1 (expr -> expr OR expr .)
+    $end            reduce using rule 1 (expr -> expr OR expr .)
+    RPAREN          reduce using rule 1 (expr -> expr OR expr .)
+    THEN            shift and go to state 7
+    IFIF            shift and go to state 8
+
+  ! THEN            [ reduce using rule 1 (expr -> expr OR expr .) ]
+  ! IFIF            [ reduce using rule 1 (expr -> expr OR expr .) ]
+  ! OR              [ shift and go to state 5 ]
+  ! AND             [ shift and go to state 6 ]
+
+
+state 12
+
+    (2) expr -> expr AND expr .
+    (1) expr -> expr . OR expr
+    (2) expr -> expr . AND expr
+    (3) expr -> expr . THEN expr
+    (4) expr -> expr . IFIF expr
+
+    OR              reduce using rule 2 (expr -> expr AND expr .)
+    AND             reduce using rule 2 (expr -> expr AND expr .)
+    $end            reduce using rule 2 (expr -> expr AND expr .)
+    RPAREN          reduce using rule 2 (expr -> expr AND expr .)
+    THEN            shift and go to state 7
+    IFIF            shift and go to state 8
+
+  ! THEN            [ reduce using rule 2 (expr -> expr AND expr .) ]
+  ! IFIF            [ reduce using rule 2 (expr -> expr AND expr .) ]
+  ! OR              [ shift and go to state 5 ]
+  ! AND             [ shift and go to state 6 ]
+
+
+state 13
+
+    (3) expr -> expr THEN expr .
+    (1) expr -> expr . OR expr
+    (2) expr -> expr . AND expr
+    (3) expr -> expr . THEN expr
+    (4) expr -> expr . IFIF expr
+
+    OR              reduce using rule 3 (expr -> expr THEN expr .)
+    AND             reduce using rule 3 (expr -> expr THEN expr .)
+    THEN            reduce using rule 3 (expr -> expr THEN expr .)
+    IFIF            reduce using rule 3 (expr -> expr THEN expr .)
+    $end            reduce using rule 3 (expr -> expr THEN expr .)
+    RPAREN          reduce using rule 3 (expr -> expr THEN expr .)
+
+  ! OR              [ shift and go to state 5 ]
+  ! AND             [ shift and go to state 6 ]
+  ! THEN            [ shift and go to state 7 ]
+  ! IFIF            [ shift and go to state 8 ]
+
+
+state 14
+
+    (4) expr -> expr IFIF expr .
+    (1) expr -> expr . OR expr
+    (2) expr -> expr . AND expr
+    (3) expr -> expr . THEN expr
+    (4) expr -> expr . IFIF expr
+
+    OR              reduce using rule 4 (expr -> expr IFIF expr .)
+    AND             reduce using rule 4 (expr -> expr IFIF expr .)
+    THEN            reduce using rule 4 (expr -> expr IFIF expr .)
+    IFIF            reduce using rule 4 (expr -> expr IFIF expr .)
+    $end            reduce using rule 4 (expr -> expr IFIF expr .)
+    RPAREN          reduce using rule 4 (expr -> expr IFIF expr .)
+
+  ! OR              [ shift and go to state 5 ]
+  ! AND             [ shift and go to state 6 ]
+  ! THEN            [ shift and go to state 7 ]
+  ! IFIF            [ shift and go to state 8 ]
+
+
+state 15
+
+    (6) expr -> LPAREN expr RPAREN .
+
+    OR              reduce using rule 6 (expr -> LPAREN expr RPAREN .)
+    AND             reduce using rule 6 (expr -> LPAREN expr RPAREN .)
+    THEN            reduce using rule 6 (expr -> LPAREN expr RPAREN .)
+    IFIF            reduce using rule 6 (expr -> LPAREN expr RPAREN .)
+    $end            reduce using rule 6 (expr -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 6 (expr -> LPAREN expr RPAREN .)
+
