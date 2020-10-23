@@ -1,10 +1,3 @@
-'''
-        Lógica mátematica proyecto 3
-
-        PRUEBA DANIELA VILLAMAR
-
-'''
-
 from ply import lex
 import ply.yacc as yacc
 import json
