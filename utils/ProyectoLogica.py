@@ -2,8 +2,7 @@ from ply import lex
 import ply.yacc as yacc
 import json
 
-# Operadores lógicos
-tokens = ('NEGATE', 'OR', 'AND', 'THEN', 'IFIF', 'LPAREN', 'RPAREN', 'PROP')
+tokens = ('NEGATE', 'OR', 'AND', 'THEN', 'DOUBLEIF', 'LPAREN', 'RPAREN', 'LETTER')
 
 t_ignore = ' \t'
 
@@ -11,11 +10,11 @@ t_NEGATE   = r'~'
 t_OR    = r'o'
 t_AND   = r'\^'
 t_THEN   = r'=>'
-t_IFIF   = r'<=>'
+t_DOUBLEIF   = r'<=>'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 
-def t_PROP( t ) :
+def t_LETTER( t ) :
     r'[p, q, r, s, t, u, v, w, x, y, z]+'
     return t
 
@@ -27,12 +26,11 @@ def t_error( t ):
   print("Invalid Token:",t.value[0])
   t.lexer.skip( 1 )
 
-#atributo necesario
 lexer = lex.lex()
 
 precedence = (
     ( 'left', 'OR', 'AND' ),
-    ( 'left', 'THEN', 'IFIF' ),
+    ( 'left', 'THEN', 'DOUBLEIF' ),
     ( 'nonassoc', 'UNEGATE' )
 )
 
@@ -49,8 +47,8 @@ def p_THEN(p) :
     'expr : expr THEN expr'
     p[0] = {p[2]:{0:p[1], 1:p[3]}}
 
-def p_IFIF(p) :
-    'expr : expr IFIF expr'
+def p_DOUBLEIF(p) :
+    'expr : expr DOUBLEIF expr'
     p[0] = {p[2]:{0:p[1], 1:p[3]}}
 
 def p_expr2uNEGATE(p) :
@@ -66,7 +64,7 @@ def p_error(p):
     print("Syntax error in input!")
 
 def p_expr2NUM(p) :
-    'expr : PROP'
+    'expr : LETTER'
     p[0] = p[1]
 
 parser = yacc.yacc()

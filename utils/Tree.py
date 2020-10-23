@@ -14,7 +14,7 @@ class Tree:
         level = 0
         self.go_deep(json, level)
         G = nx.DiGraph()
-        G.add_node(self.root_node.id, value=self.root_node.value)
+        G.add_node(self.root_node.id, value=f'{self.root_node.value}i')
         # G.add_node(self.root_node.value)
         self.create_graph(G, self.root_node)
         return G

@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftORANDleftTHENIFIFnonassocUNEGATEAND IFIF LPAREN NEGATE OR PROP RPAREN THENexpr : expr OR exprexpr : expr AND exprexpr : expr THEN exprexpr : expr IFIF exprexpr : NEGATE expr %prec UNEGATEexpr : LPAREN expr RPARENexpr : PROP'
+_lr_signature = 'leftORANDleftTHENDOUBLEIFnonassocUNEGATEAND DOUBLEIF LETTER LPAREN NEGATE OR RPAREN THENexpr : expr OR exprexpr : expr AND exprexpr : expr THEN exprexpr : expr DOUBLEIF exprexpr : NEGATE expr %prec UNEGATEexpr : LPAREN expr RPARENexpr : LETTER'
     
-_lr_action_items = {'NEGATE':([0,2,3,5,6,7,8,],[2,2,2,2,2,2,2,]),'LPAREN':([0,2,3,5,6,7,8,],[3,3,3,3,3,3,3,]),'PROP':([0,2,3,5,6,7,8,],[4,4,4,4,4,4,4,]),'$end':([1,4,9,11,12,13,14,15,],[0,-7,-5,-1,-2,-3,-4,-6,]),'OR':([1,4,9,10,11,12,13,14,15,],[5,-7,-5,5,-1,-2,-3,-4,-6,]),'AND':([1,4,9,10,11,12,13,14,15,],[6,-7,-5,6,-1,-2,-3,-4,-6,]),'THEN':([1,4,9,10,11,12,13,14,15,],[7,-7,-5,7,7,7,-3,-4,-6,]),'IFIF':([1,4,9,10,11,12,13,14,15,],[8,-7,-5,8,8,8,-3,-4,-6,]),'RPAREN':([4,9,10,11,12,13,14,15,],[-7,-5,15,-1,-2,-3,-4,-6,]),}
+_lr_action_items = {'NEGATE':([0,2,3,5,6,7,8,],[2,2,2,2,2,2,2,]),'LPAREN':([0,2,3,5,6,7,8,],[3,3,3,3,3,3,3,]),'LETTER':([0,2,3,5,6,7,8,],[4,4,4,4,4,4,4,]),'$end':([1,4,9,11,12,13,14,15,],[0,-7,-5,-1,-2,-3,-4,-6,]),'OR':([1,4,9,10,11,12,13,14,15,],[5,-7,-5,5,-1,-2,-3,-4,-6,]),'AND':([1,4,9,10,11,12,13,14,15,],[6,-7,-5,6,-1,-2,-3,-4,-6,]),'THEN':([1,4,9,10,11,12,13,14,15,],[7,-7,-5,7,7,7,-3,-4,-6,]),'DOUBLEIF':([1,4,9,10,11,12,13,14,15,],[8,-7,-5,8,8,8,-3,-4,-6,]),'RPAREN':([4,9,10,11,12,13,14,15,],[-7,-5,15,-1,-2,-3,-4,-6,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -27,11 +27,11 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> expr","S'",1,None,None,None),
-  ('expr -> expr OR expr','expr',3,'p_OR','ProyectoLogica.py',40),
-  ('expr -> expr AND expr','expr',3,'p_AND','ProyectoLogica.py',44),
-  ('expr -> expr THEN expr','expr',3,'p_THEN','ProyectoLogica.py',49),
-  ('expr -> expr IFIF expr','expr',3,'p_IFIF','ProyectoLogica.py',53),
-  ('expr -> NEGATE expr','expr',2,'p_expr2uNEGATE','ProyectoLogica.py',57),
-  ('expr -> LPAREN expr RPAREN','expr',3,'p_parens','ProyectoLogica.py',62),
-  ('expr -> PROP','expr',1,'p_expr2NUM','ProyectoLogica.py',69),
+  ('expr -> expr OR expr','expr',3,'p_OR','ProyectoLogica.py',38),
+  ('expr -> expr AND expr','expr',3,'p_AND','ProyectoLogica.py',42),
+  ('expr -> expr THEN expr','expr',3,'p_THEN','ProyectoLogica.py',47),
+  ('expr -> expr DOUBLEIF expr','expr',3,'p_DOUBLEIF','ProyectoLogica.py',51),
+  ('expr -> NEGATE expr','expr',2,'p_expr2uNEGATE','ProyectoLogica.py',55),
+  ('expr -> LPAREN expr RPAREN','expr',3,'p_parens','ProyectoLogica.py',60),
+  ('expr -> LETTER','expr',1,'p_expr2NUM','ProyectoLogica.py',67),
 ]
