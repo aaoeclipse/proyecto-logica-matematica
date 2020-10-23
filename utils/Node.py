@@ -13,7 +13,7 @@ class Node:
         self.root = False
         self.parent = parent
 
-        if level == 0:
+        if level == 1:
             self.root = True
 
     def setParent(self, node):

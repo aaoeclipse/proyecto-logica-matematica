@@ -7,7 +7,7 @@ Rule 1     expr -> expr OR expr
 Rule 2     expr -> expr AND expr
 Rule 3     expr -> expr THEN expr
 Rule 4     expr -> expr IFIF expr
-Rule 5     expr -> MINUS expr
+Rule 5     expr -> NEGATE expr
 Rule 6     expr -> LPAREN expr RPAREN
 Rule 7     expr -> PROP
 
@@ -16,7 +16,7 @@ Terminals, with rules where they appear
 AND                  : 2
 IFIF                 : 4
 LPAREN               : 6
-MINUS                : 5
+NEGATE               : 5
 OR                   : 1
 PROP                 : 7
 RPAREN               : 6
@@ -36,11 +36,11 @@ state 0
     (2) expr -> . expr AND expr
     (3) expr -> . expr THEN expr
     (4) expr -> . expr IFIF expr
-    (5) expr -> . MINUS expr
+    (5) expr -> . NEGATE expr
     (6) expr -> . LPAREN expr RPAREN
     (7) expr -> . PROP
 
-    MINUS           shift and go to state 2
+    NEGATE          shift and go to state 2
     LPAREN          shift and go to state 3
     PROP            shift and go to state 4
 
@@ -62,16 +62,16 @@ state 1
 
 state 2
 
-    (5) expr -> MINUS . expr
+    (5) expr -> NEGATE . expr
     (1) expr -> . expr OR expr
     (2) expr -> . expr AND expr
     (3) expr -> . expr THEN expr
     (4) expr -> . expr IFIF expr
-    (5) expr -> . MINUS expr
+    (5) expr -> . NEGATE expr
     (6) expr -> . LPAREN expr RPAREN
     (7) expr -> . PROP
 
-    MINUS           shift and go to state 2
+    NEGATE          shift and go to state 2
     LPAREN          shift and go to state 3
     PROP            shift and go to state 4
 
@@ -84,11 +84,11 @@ state 3
     (2) expr -> . expr AND expr
     (3) expr -> . expr THEN expr
     (4) expr -> . expr IFIF expr
-    (5) expr -> . MINUS expr
+    (5) expr -> . NEGATE expr
     (6) expr -> . LPAREN expr RPAREN
     (7) expr -> . PROP
 
-    MINUS           shift and go to state 2
+    NEGATE          shift and go to state 2
     LPAREN          shift and go to state 3
     PROP            shift and go to state 4
 
@@ -113,11 +113,11 @@ state 5
     (2) expr -> . expr AND expr
     (3) expr -> . expr THEN expr
     (4) expr -> . expr IFIF expr
-    (5) expr -> . MINUS expr
+    (5) expr -> . NEGATE expr
     (6) expr -> . LPAREN expr RPAREN
     (7) expr -> . PROP
 
-    MINUS           shift and go to state 2
+    NEGATE          shift and go to state 2
     LPAREN          shift and go to state 3
     PROP            shift and go to state 4
 
@@ -130,11 +130,11 @@ state 6
     (2) expr -> . expr AND expr
     (3) expr -> . expr THEN expr
     (4) expr -> . expr IFIF expr
-    (5) expr -> . MINUS expr
+    (5) expr -> . NEGATE expr
     (6) expr -> . LPAREN expr RPAREN
     (7) expr -> . PROP
 
-    MINUS           shift and go to state 2
+    NEGATE          shift and go to state 2
     LPAREN          shift and go to state 3
     PROP            shift and go to state 4
 
@@ -147,11 +147,11 @@ state 7
     (2) expr -> . expr AND expr
     (3) expr -> . expr THEN expr
     (4) expr -> . expr IFIF expr
-    (5) expr -> . MINUS expr
+    (5) expr -> . NEGATE expr
     (6) expr -> . LPAREN expr RPAREN
     (7) expr -> . PROP
 
-    MINUS           shift and go to state 2
+    NEGATE          shift and go to state 2
     LPAREN          shift and go to state 3
     PROP            shift and go to state 4
 
@@ -164,11 +164,11 @@ state 8
     (2) expr -> . expr AND expr
     (3) expr -> . expr THEN expr
     (4) expr -> . expr IFIF expr
-    (5) expr -> . MINUS expr
+    (5) expr -> . NEGATE expr
     (6) expr -> . LPAREN expr RPAREN
     (7) expr -> . PROP
 
-    MINUS           shift and go to state 2
+    NEGATE          shift and go to state 2
     LPAREN          shift and go to state 3
     PROP            shift and go to state 4
 
@@ -176,18 +176,18 @@ state 8
 
 state 9
 
-    (5) expr -> MINUS expr .
+    (5) expr -> NEGATE expr .
     (1) expr -> expr . OR expr
     (2) expr -> expr . AND expr
     (3) expr -> expr . THEN expr
     (4) expr -> expr . IFIF expr
 
-    OR              reduce using rule 5 (expr -> MINUS expr .)
-    AND             reduce using rule 5 (expr -> MINUS expr .)
-    THEN            reduce using rule 5 (expr -> MINUS expr .)
-    IFIF            reduce using rule 5 (expr -> MINUS expr .)
-    $end            reduce using rule 5 (expr -> MINUS expr .)
-    RPAREN          reduce using rule 5 (expr -> MINUS expr .)
+    OR              reduce using rule 5 (expr -> NEGATE expr .)
+    AND             reduce using rule 5 (expr -> NEGATE expr .)
+    THEN            reduce using rule 5 (expr -> NEGATE expr .)
+    IFIF            reduce using rule 5 (expr -> NEGATE expr .)
+    $end            reduce using rule 5 (expr -> NEGATE expr .)
+    RPAREN          reduce using rule 5 (expr -> NEGATE expr .)
 
   ! OR              [ shift and go to state 5 ]
   ! AND             [ shift and go to state 6 ]

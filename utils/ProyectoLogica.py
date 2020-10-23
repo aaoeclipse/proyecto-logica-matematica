@@ -3,11 +3,11 @@ import ply.yacc as yacc
 import json
 
 # Operadores lógicos
-tokens = ('MINUS', 'OR', 'AND', 'THEN', 'IFIF', 'LPAREN', 'RPAREN', 'PROP')
+tokens = ('NEGATE', 'OR', 'AND', 'THEN', 'IFIF', 'LPAREN', 'RPAREN', 'PROP')
 
 t_ignore = ' \t'
 
-t_MINUS   = r'~'
+t_NEGATE   = r'~'
 t_OR    = r'o'
 t_AND   = r'\^'
 t_THEN   = r'=>'
@@ -16,7 +16,7 @@ t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 
 def t_PROP( t ) :
-    r'[p, q, r, s, t, u, v, w, x, y, z]+' # Variables proposicionales de nuestro alfabeto
+    r'[p, q, r, s, t, u, v, w, x, y, z]+'
     return t
 
 def t_newline( t ):
@@ -33,7 +33,7 @@ lexer = lex.lex()
 precedence = (
     ( 'left', 'OR', 'AND' ),
     ( 'left', 'THEN', 'IFIF' ),
-    ( 'nonassoc', 'UMINUS' )
+    ( 'nonassoc', 'UNEGATE' )
 )
 
 def p_OR(p) :
@@ -53,8 +53,8 @@ def p_IFIF(p) :
     'expr : expr IFIF expr'
     p[0] = {p[2]:{0:p[1], 1:p[3]}}
 
-def p_expr2uminus(p) :
-    'expr : MINUS expr %prec UMINUS'
+def p_expr2uNEGATE(p) :
+    'expr : NEGATE expr %prec UNEGATE'
     p[0] = {p[1]:p[2]}
 
 
@@ -75,10 +75,3 @@ def parse(expresion):
     res = parser.parse(expresion)
     js = json.dumps(res, indent=3)
     return js
-
-
-# expresion = input("Ingrese la expresion a evaluar: ")
-# res = parser.parse(expresion)
-# js = json.dumps(res, indent=3)
-# print('Resultado: ', expresion)
-# print(js)
